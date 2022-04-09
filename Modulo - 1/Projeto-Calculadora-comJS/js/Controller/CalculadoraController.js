@@ -28,18 +28,38 @@ class CalculadoraController {
 
         buttons.forEach(button => {
             button.addEventListener('click',  event => {
-                    let valor = button.innerHTML;
+                    let buttons = button.innerHTML;
+                    
+                    let valorTotal = 0;
 
-
-                    switch(valor) {
+                    switch(buttons) {
+                        case 'AC': 
+                            
+                            break;
+                        case 'backspace': 
+                            
+                            break;
+                        case '+': 
+                            
+                            break;
+                        case '-': 
+                           
+                            break;
+                        case 'x': 
+                            
+                            break;
+                        case '÷': 
+                            
+                            break;    
+                            
                         case '1': 
-                            console.log('Você clicou no botão 1');
+                        
                             break;
                         case '2': 
-                            console.log('Você clicou no botão 2');
+                            
                             break;    
                         case '3': 
-                            console.log('Você clicou no botão 3');
+                        
                             break;
                         case '4': 
                             console.log('Você clicou no botão 4');
