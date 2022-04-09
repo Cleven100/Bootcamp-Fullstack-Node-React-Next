@@ -1,9 +1,9 @@
 class CalculadoraController {
     constructor() {
         
-       this.dataElement = document.querySelector('.data');
-       this.hoursElement = document.querySelector('.hora');
-       
+       this._dataElement = document.querySelector('.data');
+       this._hoursElement = document.querySelector('.hora');
+       this._listExpress  = ['0'];
        this.start();
        this.initAddEventButtons();
     }
