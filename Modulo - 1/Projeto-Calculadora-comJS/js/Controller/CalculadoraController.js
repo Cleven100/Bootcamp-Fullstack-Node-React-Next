@@ -5,6 +5,7 @@ class CalculadoraController {
        this.hoursElement = document.querySelector('.hora');
        
        this.start();
+       this.initAddEventButtons();
     }
 
     start() {
@@ -20,4 +21,18 @@ class CalculadoraController {
          this.hoursElement.innerHTML = data.toLocaleTimeString('pt-BR');
      }
 
+
+     initAddEventButtons() {
+
+        let buttons = document.querySelectorAll('table.botoes td');
+
+        buttons.forEach(button => {
+            button.addEventListener('click',  event => {
+                    
+            })
+        });
+
+        
+
+     }
 }
