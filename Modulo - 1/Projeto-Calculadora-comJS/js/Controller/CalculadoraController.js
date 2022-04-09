@@ -3,7 +3,15 @@ class CalculadoraController {
         
        this.dataElement = document.querySelector('.data');
        this.hoursElement = document.querySelector('.hora');
-       this.updateData();
+       
+       this.start();
+    }
+
+    start() {
+        
+        setInterval(() => {
+          this.updateData();
+        },1000)
     }
 
      updateData() {
