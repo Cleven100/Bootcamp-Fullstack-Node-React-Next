@@ -3,6 +3,7 @@ class CalculadoraController {
         
        this._dataElement = document.querySelector('.data');
        this._hoursElement = document.querySelector('.hora');
+       this._displayElement = document.querySelector('.expressao')
        this._listExpress  = ['0'];
        this.start();
        this.initAddEventButtons();
@@ -15,6 +16,10 @@ class CalculadoraController {
         },1000)
     }
 
+    upadateDisplay() {
+        this._displayElement.innerHTML = this._listExpress.join('');
+    }
+
      updateData() {
          let data = new Date();
          this._dataElement.innerHTML = data.toLocaleDateString('pt-BR');
@@ -23,7 +28,11 @@ class CalculadoraController {
 
      addValuesExpress(value) {
           if(this.checkOperator(value)){
-              this._listExpress.push(value);
+              if(this.checkOperator(this.returnEnd())){
+                 this._listExpress[this._listExpress.length-1] = value;
+              }else{
+                 this._listExpress.push(value);
+              }             
           } else {
               if(this.checkOperator(this.returnEnd())){
                   this._listExpress.push(value);
@@ -33,6 +42,8 @@ class CalculadoraController {
              
           }
           console.log(this._listExpress)
+        this.upadateDisplay();
+          
      } 
 
      
