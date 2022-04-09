@@ -23,19 +23,29 @@ class CalculadoraController {
 
      addValuesExpress(value) {
           if(this.checkOperator(value)){
-              
+              this._listExpress.push(value);
           } else {
-
+              if(this.checkOperator(this.returnEnd())){
+                  this._listExpress.push(value);
+              } else{
+                this._listExpress[this._listExpress.length-1] += value.toString();
+              }
+             
           }
+          console.log(this._listExpress)
      } 
 
+     
+    returnEnd() {
+        return this._listExpress[this._listExpress.length-1];
+    }
 
      clear() {
 
      }
 
      checkOperator(value) {
-         return (['x','-','÷','+'].indexOf(value)>-1);
+         return ['x','-','÷','+'].indexOf(value)>-1;
         
      }
 
