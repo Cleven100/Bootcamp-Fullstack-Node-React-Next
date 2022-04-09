@@ -22,7 +22,7 @@ class CalculadoraController {
      }
 
      addValuesExpress(value) {
-          if(isNaN(value)){
+          if(this.checkOperator(value)){
               
           } else {
 
@@ -35,11 +35,8 @@ class CalculadoraController {
      }
 
      checkOperator(value) {
-         if(['x','-','÷','+'].indexOf(value)>-1){
-               return true;
-         } else {
-             return false
-         }
+         return (['x','-','÷','+'].indexOf(value)>-1);
+        
      }
 
 
