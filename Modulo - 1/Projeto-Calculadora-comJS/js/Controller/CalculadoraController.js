@@ -17,10 +17,22 @@ class CalculadoraController {
 
      updateData() {
          let data = new Date();
-         this.dataElement.innerHTML = data.toLocaleDateString('pt-BR');
-         this.hoursElement.innerHTML = data.toLocaleTimeString('pt-BR');
+         this._dataElement.innerHTML = data.toLocaleDateString('pt-BR');
+         this._hoursElement.innerHTML = data.toLocaleTimeString('pt-BR');
      }
 
+     addValuesExpress(value) {
+          console.log(value);
+     } 
+
+
+     clear() {
+
+     }
+
+     backspace() {
+         
+     }
 
      initAddEventButtons() {
 
@@ -28,48 +40,52 @@ class CalculadoraController {
 
         buttons.forEach(button => {
             button.addEventListener('click',  event => {
-                    let buttons = button.innerHTML;
+                    let value = button.innerHTML;
                     
-                    let valorTotal = 0;
-
-                    switch(buttons) {
+                    
+                    switch(value) {
                         case 'AC': 
-                            
-                            break;
+                            this.clear();
+                        break;
                         case 'backspace': 
-                            
-                            break;
+                        break;
+                           
                         case '+': 
                             
-                            break;
+                            
                         case '-': 
                            
-                            break;
+                            
                         case 'x': 
                             
-                            break;
+                            
                         case '÷': 
                             
-                            break;    
+                              
                             
                         case '1': 
                         
-                            break;
+                           
                         case '2': 
                             
-                            break;    
+                               
                         case '3': 
                         
-                            break;
+                          
                         case '4': 
-                            console.log('Você clicou no botão 4');
-                            break;
+                            
+                          
                         case '5': 
-                            console.log('Você clicou no botão 5');
-                            break;
+                            
+                           
                         case '6': 
-                            console.log('Você clicou no botão 6');
+                        case '7':
+                        case '8': 
+                        case '9':  
+                            this.addValuesExpress(value)
+
                             break;
+                            
                     }
             })
         });
