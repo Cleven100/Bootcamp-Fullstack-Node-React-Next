@@ -14,10 +14,58 @@ class CalculadoraController {
     }, 1000);
   }
 
-  calculete() {
-     
-      console.log(this._listExpress)
+  calculate() {
+      
+      for(let i=0; i<this._listExpress.length; i+=2){
+          this._listExpress[i] = parseFloat(this._listExpress[i])
+      }
+      
+      while(this.multiplicationIndexOf(this._listExpress,['÷','x'])[0]>-1){
+        let operation = this.multiplicationIndexOf(this._listExpress,['÷','x']); 
+        let result
+        switch(operation[1]){
+            case '÷':
+                result = this._listExpress[operation[0]-1]/this._listExpress[operation[0]+1];
+                break;
+            case 'x':
+                result = this._listExpress[operation[0]-1]*this._listExpress[operation[0]+1]; 
+                break;
+        }
+
+        this._listExpress.splice(operation[0]-1,3,result);
+        
+     }
+
+     while(this.multiplicationIndexOf(this._listExpress,['+','-'])[0]>-1){
+        let operation = this.multiplicationIndexOf(this._listExpress,['+','-']); 
+        let result
+        switch(operation[1]){
+            case '+':
+                result = this._listExpress[operation[0]-1]+this._listExpress[operation[0]+1];
+                break;
+            case '-':
+                result = this._listExpress[operation[0]-1]-this._listExpress[operation[0]+1]; 
+                break;
+        }
+
+        this._listExpress.splice(operation[0]-1,3,result);
+        
+     }  
   }
+
+ 
+multiplicationIndexOf(arrayPrincipal, array) {
+    for(let i = 0; i<arrayPrincipal.length; i++){
+        let valueOne = arrayPrincipal[i]
+        for(let j = 0; j<array.length; j++){
+            let valueTwo = array[j];
+            if(valueOne == valueTwo){
+                return [i,valueTwo];
+            }
+        }
+    }
+  return [-1,'']
+}
 
   upadateDisplay() {
     this._displayElement.innerHTML = this._listExpress.join("");
@@ -98,7 +146,7 @@ class CalculadoraController {
               this.backspace();
             break;
           case "=": 
-             this.calculete();
+             this.calculate();
              break;
           case "+":
           case ".":
