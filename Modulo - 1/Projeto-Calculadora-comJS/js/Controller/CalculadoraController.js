@@ -3,9 +3,13 @@ class CalculadoraController {
     this._dataElement = document.querySelector(".data");
     this._hoursElement = document.querySelector(".hora");
     this._displayElement = document.querySelector(".expressao");
+    this._previewElement = document.querySelector(".previa");
     this._listExpress = ["0"];
+    this._prev = 0;
     this.start();
     this.initAddEventButtons();
+    this.initAddEventsKeyboard();
+    this.ifResult = false;
   }
 
   start() {
@@ -14,46 +18,71 @@ class CalculadoraController {
     }, 1000);
   }
 
-  calculate() {
+  calculate(array) {
       
-      for(let i=0; i<this._listExpress.length; i+=2){
-          this._listExpress[i] = parseFloat(this._listExpress[i])
+      for(let i=0; i<array.length; i+=2){
+          array[i] = parseFloat(array[i])
       }
       
-      while(this.multiplicationIndexOf(this._listExpress,['÷','x'])[0]>-1){
-        let operation = this.multiplicationIndexOf(this._listExpress,['÷','x']); 
+      while(this.multiplicationIndexOf(array,['÷','x'])[0]>-1){
+        let operation = this.multiplicationIndexOf(array,['÷','x']); 
         let result
         switch(operation[1]){
             case '÷':
-                result = this._listExpress[operation[0]-1]/this._listExpress[operation[0]+1];
+                result = array[operation[0]-1]/array[operation[0]+1];
                 break;
             case 'x':
-                result = this._listExpress[operation[0]-1]*this._listExpress[operation[0]+1]; 
+                result = array[operation[0]-1]*array[operation[0]+1]; 
                 break;
         }
 
-        this._listExpress.splice(operation[0]-1,3,result);
+        array.splice(operation[0]-1,3,result);
         
      }
 
-     while(this.multiplicationIndexOf(this._listExpress,['+','-'])[0]>-1){
-        let operation = this.multiplicationIndexOf(this._listExpress,['+','-']); 
+     while(this.multiplicationIndexOf(array,['+','-'])[0]>-1){
+        let operation = this.multiplicationIndexOf(array,['+','-']); 
         let result
         switch(operation[1]){
             case '+':
-                result = this._listExpress[operation[0]-1]+this._listExpress[operation[0]+1];
+                result = array[operation[0]-1]+array[operation[0]+1];
                 break;
             case '-':
-                result = this._listExpress[operation[0]-1]-this._listExpress[operation[0]+1]; 
+                result = array[operation[0]-1]-array[operation[0]+1]; 
                 break;
         }
 
-        this._listExpress.splice(operation[0]-1,3,result);
+        array.splice(operation[0]-1,3,result);
         
      }  
+     this._ifResult = true;
+     array[0] = array[0].toString();
+     this.upadateDisplay();
   }
 
- 
+  calculatePreview() {
+  let listPreview = [];
+   this._listExpress.forEach((value) => {
+       listPreview.push(value);
+   })
+   this.calculate(listPreview);
+   
+   this._ifResult = false;
+    if(isNaN(listPreview[0])){
+        return
+    }
+   this._prev = listPreview.join('');
+   this.upadateDisplay();
+  }
+
+
+error(){
+    this._displayElement.innerHTML = 'ERROR';
+    this._previewElement.innerHTML = '';
+    this._ifResult = true;
+}
+
+
 multiplicationIndexOf(arrayPrincipal, array) {
     for(let i = 0; i<arrayPrincipal.length; i++){
         let valueOne = arrayPrincipal[i]
@@ -69,6 +98,7 @@ multiplicationIndexOf(arrayPrincipal, array) {
 
   upadateDisplay() {
     this._displayElement.innerHTML = this._listExpress.join("");
+    this._previewElement.innerHTML = this._prev;
     this._displayElement.scrollBy(100, 0);
   }
 
@@ -98,7 +128,7 @@ multiplicationIndexOf(arrayPrincipal, array) {
         this._listExpress[this._listExpress.length - 1] += value.toString();
       }
     }
-    console.log(this._listExpress);
+    
     this.upadateDisplay();
   }
 
@@ -108,8 +138,88 @@ multiplicationIndexOf(arrayPrincipal, array) {
 
   clear() {
     this._listExpress = ["0"];
+    this._prev = '0';
     this.upadateDisplay();
   }
+
+
+
+  initAddEventsKeyboard() {
+      document.addEventListener('keyup', (event)=>{
+          
+
+          switch (event.key) {
+            case "c":
+              this.clear();
+              break;
+            case "Backspace":
+                this.backspace();
+                if(this._ifResult == true){
+                  this.clear();
+                  
+              }
+              this.calculatePreview();
+              break;
+            case "Enter": 
+            if(this._ifResult == true){
+              return;
+          }
+               this._prev = '';
+               this.calculate(this._listExpress);
+               break;
+            case "+":
+            case ".":
+  
+            case "-":
+  
+            
+            case "0":
+  
+            case "1":
+  
+            case "2":
+  
+            case "3":
+  
+            case "4":
+  
+            case "5":
+  
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+             
+                if(this._ifResult == true){
+                    this.clear();
+                    this._ifResult == false;
+                }
+                this.addValuesExpress(event.key);
+                this.calculatePreview();
+  
+              break;
+              case "*":
+                if(this._ifResult == true){
+                    this.clear();
+                    this._ifResult == false;
+                }
+                this.addValuesExpress('x');
+                this.calculatePreview();
+                  break;
+              case "/":
+                if(this._ifResult == true){
+                    this.clear();
+                    this._ifResult == false;
+                }
+                this.addValuesExpress('÷');
+                this.calculatePreview();
+                  break;
+          }
+          
+         
+      })
+  }
+
 
   backspace() {
     this._listExpress[this._listExpress.length - 1] = this.returnEnd().slice(
@@ -144,9 +254,18 @@ multiplicationIndexOf(arrayPrincipal, array) {
             break;
           case "backspace":
               this.backspace();
+              if(this._ifResult == true){
+                this.clear();
+                
+            }
+            this.calculatePreview();
             break;
           case "=": 
-             this.calculate();
+          if(this._ifResult == true){
+            return;
+        }
+             this._prev = '';
+             this.calculate(this._listExpress);
              break;
           case "+":
           case ".":
@@ -156,6 +275,7 @@ multiplicationIndexOf(arrayPrincipal, array) {
           case "x":
 
           case "÷":
+          case "0":
 
           case "1":
 
@@ -171,9 +291,19 @@ multiplicationIndexOf(arrayPrincipal, array) {
           case "7":
           case "8":
           case "9":
+           
+            if(this._ifResult == true){
+                this.clear();
+                this._ifResult == false;
+            }
             this.addValuesExpress(value);
+            this.calculatePreview();
 
             break;
+        }
+        
+        if(isNaN(this._listExpress[0])){
+            this.error();
         }
       });
     });
