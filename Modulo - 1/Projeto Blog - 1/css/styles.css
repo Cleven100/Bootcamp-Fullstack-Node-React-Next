@@ -22,10 +22,56 @@ h1 {
 }
 
 h2 {
-    font-size:  52px;
+    font-size:  40px;
     
 }
 h3 {
-    font-size:  52px;
+    font-size:  30px;
+    
+}
+
+
+.structure {
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "headline"
+    "info"
+    "content"
+    "infoFooter"
+    "footer"
+    ;
+}
+
+.header {
+        grid-area: header;
+}
+
+.headline {
+    grid-area: headline;
+}
+
+.info {
+    grid-area: info;
+}
+.content {
+    grid-area: content;
+}
+.infoFooter {
+    grid-area: infoFooter;
+}
+.footer {
+    grid-area: footer;
+}
+
+@media (max-width: 1200px) {
+    
+}
+
+@media (max-width: 1000px) {
+    
+}
+
+@media (max-width: 600px) {
     
 }
