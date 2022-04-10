@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+    --color-primary: #862beF;
+    --color-secondary: #FFE900;
+    --color-background: #000;
+    --color-background-seconday: #222121;
+    --color-gray: #585757;
+}
+
+body, input, select {
+    font-family: 'Archivo', sans-serif;
+}
+
+h1 {
+    font-size:  52px;
+    
+}
+
+h2 {
+    font-size:  52px;
+    
+}
+h3 {
+    font-size:  52px;
+    
+}
