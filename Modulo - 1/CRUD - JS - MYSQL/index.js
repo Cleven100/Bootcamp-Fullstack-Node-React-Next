@@ -1,9 +1,19 @@
-var restify = require('restify');
+const restify = require('restify');
 
 const server = restify.createServer({
     name: 'CRUD',
     version: '1.0.0'
 });
+
+const knex = require('knex')({
+    client: 'mysql',
+    connection: {
+        host: '127.0.0.1',
+        user: 'root',
+        password: '',
+        database: 'db'
+    }
+})
 
 server.use(restify.plugins.acceptParser(server.acceptable));
 

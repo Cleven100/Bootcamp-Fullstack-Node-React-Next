@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "restify": "^8.6.1"
+    "knex": "^1.0.6",
+    "mysql": "^2.18.1",
+    "restify": "^8.6.1",
+    "restify-errors": "^8.0.2"
   }
 }
