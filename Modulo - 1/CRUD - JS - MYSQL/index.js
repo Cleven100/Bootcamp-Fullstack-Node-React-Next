@@ -1,4 +1,7 @@
+
 const restify = require('restify');
+
+var valores;
 
 const server = restify.createServer({
     name: 'CRUD',
@@ -8,10 +11,10 @@ const server = restify.createServer({
 const knex = require('knex')({
     client: 'mysql',
     connection: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: '',
-        database: 'db'
+        host : '127.0.0.1',
+        user : 'root',
+        password : '',
+        database : 'db'
     }
 })
 
@@ -30,3 +33,33 @@ server.get('/echo/:name', function (require,response, next) {
 server.listen(8080, function(){
     console.log('%s listening at %s', server.name, server.url);
 });
+
+
+server.get('/', function (require,response, next) {
+    
+    knex('rest').then((dados) =>{
+       console.log(dados);
+    }, next);
+
+
+ 
+    return next();
+});
+
+
+server.get('/show/:id', function (require,response, next) {
+    const { id } = require.params;
+    knex('rest')
+    .where('id', id)
+    .first()
+    .then((dados) =>{
+        console.log(dados);
+      
+    }, next);
+
+
+ 
+    return next();
+});
+
+
