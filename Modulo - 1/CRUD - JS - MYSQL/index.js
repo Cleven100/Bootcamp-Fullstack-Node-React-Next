@@ -63,3 +63,20 @@ server.get('/show/:id', function (require,response, next) {
 });
 
 
+
+server.put('/update/:id', function (require,response, next) {
+    const { id } = require.params;
+    knex('rest')
+    .where('id', id)
+    .update(require.body)
+    .then((dados) =>{
+        console.log(dados);
+      
+    }, next);
+
+
+ 
+    return next();
+});
+
+
