@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import shortid from 'shortid';
 
 function App() {
   const [tarefa, setTarefa] = useState("");
@@ -11,7 +12,7 @@ function App() {
           console.log(tarefa);
           setTarefas([
             ...tarefas,
-            {id: 1, nomeTarefa:tarefa}
+            {id: shortid.generate(), nomeTarefa:tarefa}
           ])
      }else {
        console.log("Elemento Vazio");
