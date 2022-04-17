@@ -20,6 +20,11 @@ function App() {
      }
   }
 
+  const deletarTarefa = id => {
+    const arrayFiltrado = tarefas.filter(item => item.id !== id )
+    setTarefas(arrayFiltrado)
+  }
+
   return (
     <div className="container mt-5">
       <h1 className="text-center">CRUD SIMPLES</h1>
@@ -32,12 +37,18 @@ function App() {
              tarefas.map(item => (
                <li className="list-group-item" key={item.id}>
               <span className="lead">{item.nomeTarefa}</span>
-              <button className="btn btn-warning btn-sm float-end mx-2">
+              <button
+               
+               className="btn btn-warning btn-sm float-end mx-2">
                 Editar
               </button>
-              <button className="btn btn-danger btn-sm float-end ">
+
+              <button 
+              onClick={() => deletarTarefa(item.id)}
+              className="btn btn-danger btn-sm float-end ">
                 Deletar
               </button>
+
             </li>
              ))
            }
