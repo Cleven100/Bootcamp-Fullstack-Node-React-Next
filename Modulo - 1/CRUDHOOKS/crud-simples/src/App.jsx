@@ -4,6 +4,7 @@ import shortid from 'shortid';
 function App() {
   const [tarefa, setTarefa] = useState("");
   const [tarefas, setTarefas] = useState([]);
+  const [modoEdicao, setModoEdicao] = useState(false);
 
   const updateTarefa = event => {
      event.preventDefault()
@@ -25,6 +26,11 @@ function App() {
     setTarefas(arrayFiltrado)
   }
 
+ const editar = item => {
+     setModoEdicao(true)
+ }
+
+
   return (
     <div className="container mt-5">
       <h1 className="text-center">CRUD SIMPLES</h1>
@@ -38,7 +44,7 @@ function App() {
                <li className="list-group-item" key={item.id}>
               <span className="lead">{item.nomeTarefa}</span>
               <button
-               
+               onClick={() => editar(item)}
                className="btn btn-warning btn-sm float-end mx-2">
                 Editar
               </button>
@@ -58,7 +64,11 @@ function App() {
           </ul>
         </div>
         <div className="col-4">
-          <h4 className="text-center">Formulario</h4>
+          <h4 className="text-center">
+            {
+              modoEdicao ? 'Editar tarefa' : 'Adicionar tarefa'
+            }
+          </h4>
           <form onSubmit={updateTarefa}>
             <input
               type="text"
@@ -68,9 +78,23 @@ function App() {
               value={tarefa}
             />
             <div class="d-grid gap-2">
-              <button class="btn btn-dark" type="submit">
-                Acrescentar
+
+
+                {
+                  modoEdicao ? (
+                    <button
+               
+               className="btn btn-warning" type="submit">
+                Editar
               </button>
+                  ) : (  <button
+               
+                    className="btn btn-dark" type="submit">
+                     Acrescentar
+                   </button>)
+                }
+
+              
             </div>
           </form>
         </div>
