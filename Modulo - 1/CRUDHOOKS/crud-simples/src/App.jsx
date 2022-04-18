@@ -28,6 +28,7 @@ function App() {
 
  const editar = item => {
      setModoEdicao(true)
+     setTarefa(item.nomeTarefa)
  }
 
 
