@@ -5,7 +5,8 @@ function App() {
   const [tarefa, setTarefa] = useState("");
   const [tarefas, setTarefas] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
-  const [id, setId] = React.useState('');
+  const [id, setId] = useState('');
+  const [error, setError] = useState(null);
 
   const updateTarefa = event => {
     event.preventDefault()
@@ -18,6 +19,7 @@ function App() {
          ])
     }else {
       console.log("Elemento Vazio");
+      setError('Escrevendo algo....')
       return
     }
   }
@@ -38,7 +40,7 @@ function App() {
      
   if(!tarefa.trim()){
        return
-      
+      setError('Escrevendo algo...')
   }
   const arrayEditado = tarefas.map(
     item => item.id === id ? {id, nomeTarefa:tarefa} : item
@@ -48,6 +50,7 @@ function App() {
     setModoEdicao(false)
      setTarefa('')
      setId('') 
+     setError(null)
  }
 
 
@@ -60,7 +63,13 @@ function App() {
           <h4 className="text-center">Lista de tarefas</h4>
           <ul className="list-group">
            {
-             tarefas.map(item => (
+                        
+            tarefas.length === 0 ? (
+              
+                   <li className="list-group-item">Não tem tarefas.</li>
+
+            ) : (
+              tarefas.map(item => (
                <li className="list-group-item" key={item.id}>
               <span className="lead">{item.nomeTarefa}</span>
               <button
@@ -77,7 +86,10 @@ function App() {
 
             </li>
              ))
-           }
+           
+            )
+              }
+             
             
 
 
@@ -88,8 +100,13 @@ function App() {
             {
               modoEdicao ? 'Editar tarefa' : 'Adicionar tarefa'
             }
+
           </h4>
           <form onSubmit={modoEdicao ? editarTarefa : updateTarefa}>
+            {
+              error ? <span className="text-danger">{error}</span> : null
+
+            }
             <input
               type="text"
               className="form-control mb-2"
