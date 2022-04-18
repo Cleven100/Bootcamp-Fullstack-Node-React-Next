@@ -5,20 +5,21 @@ function App() {
   const [tarefa, setTarefa] = useState("");
   const [tarefas, setTarefas] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
+  const [id, setId] = React.useState('');
 
   const updateTarefa = event => {
-     event.preventDefault()
+    event.preventDefault()
      
-     if(tarefa.trim()){
-          console.log(tarefa);
-          setTarefas([
-            ...tarefas,
-            {id: shortid.generate(), nomeTarefa:tarefa}
-          ])
-     }else {
-       console.log("Elemento Vazio");
-       return
-     }
+    if(tarefa.trim()){
+         console.log(tarefa);
+         setTarefas([
+           ...tarefas,
+           {id: shortid.generate(), nomeTarefa:tarefa}
+         ])
+    }else {
+      console.log("Elemento Vazio");
+      return
+    }
   }
 
   const deletarTarefa = id => {
@@ -29,6 +30,24 @@ function App() {
  const editar = item => {
      setModoEdicao(true)
      setTarefa(item.nomeTarefa)
+     setId(item.id)
+ }
+
+ const editarTarefa = event => {
+  event.preventDefault()
+     
+  if(!tarefa.trim()){
+       return
+      
+  }
+  const arrayEditado = tarefas.map(
+    item => item.id === id ? {id, nomeTarefa:tarefa} : item
+    )
+
+    setTarefas(arrayEditado)
+    setModoEdicao(false)
+     setTarefa('')
+     setId('') 
  }
 
 
@@ -70,7 +89,7 @@ function App() {
               modoEdicao ? 'Editar tarefa' : 'Adicionar tarefa'
             }
           </h4>
-          <form onSubmit={updateTarefa}>
+          <form onSubmit={modoEdicao ? editarTarefa : updateTarefa}>
             <input
               type="text"
               className="form-control mb-2"
