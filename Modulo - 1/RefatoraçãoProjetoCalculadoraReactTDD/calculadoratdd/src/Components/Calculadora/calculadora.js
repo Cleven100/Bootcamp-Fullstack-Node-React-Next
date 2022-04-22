@@ -36,8 +36,23 @@ export default function Calculadora() {
         
     }
 
-    function defineOperation(operation){
-        
+    function defineOperation(op){
+
+      if (operation === null) {
+          setOperation(op);
+          return;
+      }
+
+      if(numberTwo !== null) {
+          const result = calcular(parseFloat(numberOne), parseFloat(numberTwo), operation);
+          setOperation(op);
+          setNumberOne(result.toString());
+          setNumberTwo(null);
+          setTextNumber(result.toString());
+      }
+ 
+
+
     }
   
 
@@ -48,10 +63,21 @@ export default function Calculadora() {
       style={{
         background: "transparent !important",
         backgroundColor: "#68686b",
+        
 
         padding: "5px",
         margin: "5px",
         width: "400px",
+        position: "absolute",
+        top: "0",
+        left: "0",
+        display: "flex",
+        justifyContent: "center",
+        alignitems: "center"
+
+       
+        
+
       }}
     >
       <Container>
@@ -90,7 +116,7 @@ export default function Calculadora() {
             </Button>
           </Col>
           <Col>
-            <Button variant="light" onClick={() => addNumber("/")}>
+            <Button variant="light" onClick={() => defineOperation("/")}>
               /
             </Button>
           </Col>
@@ -113,7 +139,7 @@ export default function Calculadora() {
             </Button>
           </Col>
           <Col>
-            <Button variant="light" onClick={() => addNumber("x")}>
+            <Button variant="light" onClick={() => defineOperation("x")}>
               x
             </Button>
           </Col>
@@ -136,7 +162,7 @@ export default function Calculadora() {
             </Button>
           </Col>
           <Col>
-            <Button variant="light" onClick={() => addNumber("+")}>
+            <Button variant="light" onClick={() => defineOperation("+")}>
               +
             </Button>
           </Col>
@@ -154,12 +180,12 @@ export default function Calculadora() {
             </Button>
           </Col>
           <Col xs={3}>
-            <Button variant="info" onClick={() => addNumber("=")}>
+            <Button variant="info" onClick={() => defineOperation("=")}>
               =
             </Button>
           </Col>
           <Col>
-            <Button variant="light" onClick={() => addNumber("-")}>
+            <Button variant="light" onClick={() => defineOperation("-")}>
               -
             </Button>
           </Col>
