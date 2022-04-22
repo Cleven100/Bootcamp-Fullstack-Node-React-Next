@@ -8,37 +8,7 @@ export default function Calculadora() {
   const [resultNumber, setResultNumber] = useState("0");
 
   function addNumber(numero) {
-    switch (numero) {
-      case "+":
-        console.log("Voce clicou no +");
-         
-      
-        setResultNumber(resultNumber + textNumber);
-        setTextNumber('')
-        console.log(resultNumber);
-
-
-        break;
-
-      case "-":
-        console.log("Voce clicou no -");
-        break;
-
-      case "x":
-        console.log("Voce clicou no x");
-        break;
-
-      case "/":
-        console.log("Voce clicou no /");
-        break;
-      case "=":
-        console.log("Voce clicou no =");
-        break;
-
-      case ".":
-        console.log("Voce clicou no .");
-        break;
-      default:
+    
         if (textNumber != 0) {
             setTextNumber(textNumber + numero);
           } else {
@@ -46,7 +16,7 @@ export default function Calculadora() {
           }
           console.log(textNumber)
     }
-  }
+  
 
   function cleanNumber() {
     setTextNumber("0");
