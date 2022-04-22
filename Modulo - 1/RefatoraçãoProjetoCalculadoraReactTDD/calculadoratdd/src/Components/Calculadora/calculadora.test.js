@@ -1,9 +1,15 @@
-import { render, screen } from '@testing-library/react';
 import React from 'react';
-import Calculadora from './calculadora'
+import ReactDOM from 'react-dom';
+import Calculadora from './calculadora';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
-test('renders learn react link', () => {
-  render(<Calculadora />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Calculadora', () => {
+
+  it('deve renderizar o componente sem erros', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Calculadora />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
 });
