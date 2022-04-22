@@ -3,6 +3,7 @@
 export default function CalculadoraService() {
 
     const SUM = '+';
+    const SUBTRACTION = '-';
 
   function calcular(numberOne, numberTwo, operator) {
     let result;
@@ -10,14 +11,19 @@ export default function CalculadoraService() {
       case SUM:
         result = numberOne + numberTwo;
         break;
-        default:
-            result = 5;
+      case SUBTRACTION:
+        result = numberOne - numberTwo;
+        break;  
+
+        default: 
+        result = 10
     }
-    return numberOne + numberTwo;
+    return result;
   }
 
   return [
       calcular,
-      SUM
+      SUM,
+      SUBTRACTION
     ];
 }
