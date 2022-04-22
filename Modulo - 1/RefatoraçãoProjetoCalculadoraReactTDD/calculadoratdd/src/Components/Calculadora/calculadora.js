@@ -1,26 +1,47 @@
 import React, { useState } from "react";
 import { Jumbotron, Container, Row, Col, Button, Form } from "react-bootstrap";
+import CalculadoraService from "./calculadora.service";
 
 import "./calculadora.css";
 
 export default function Calculadora() {
-  const [textNumber, setTextNumber] = useState("0");
-  const [resultNumber, setResultNumber] = useState("0");
 
-  function addNumber(numero) {
-    
-        if (textNumber != 0) {
-            setTextNumber(textNumber + numero);
-          } else {
-            setTextNumber(numero);
-          }
-          console.log(textNumber)
+  const [textNumber, setTextNumber] = useState("0");
+  const [numberOne, setNumberOne] = useState("0");
+  const [numberTwo, setNumberTwo] = useState(null);
+  const [operation, setOperation] = useState(null);
+
+  const [calcular, concatenarNumber, SUM, SUBTRACTION, DIVISION, MULTIPLICATION] = CalculadoraService();
+
+  function addNumber(number) {
+     let result;
+      
+     if(operation == null){
+        result = concatenarNumber(numberOne, number)
+        setNumberOne(result);
+     } else {
+       result = concatenarNumber(numberTwo, number)
+       setNumberTwo(result)
+     }
+      if(number === "C") {
+         
+         setTextNumber('0');
+         setNumberOne('0');
+         setNumberTwo('0');
+     } else {
+         setTextNumber(result);
+     }
+
+     
+        
+    }
+
+    function defineOperation(operation){
+        
     }
   
 
-  function cleanNumber() {
-    setTextNumber("0");
-  }
+  
 
   return (
     <Jumbotron
@@ -36,7 +57,7 @@ export default function Calculadora() {
       <Container>
         <Row>
           <Col xs="3">
-            <Button variant="info" onClick={() => cleanNumber()}>
+            <Button variant="info" onClick={() => addNumber("C")}>
               C
             </Button>
           </Col>
