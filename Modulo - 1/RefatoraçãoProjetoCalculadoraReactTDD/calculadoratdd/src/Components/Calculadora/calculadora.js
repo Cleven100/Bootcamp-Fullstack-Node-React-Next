@@ -27,7 +27,9 @@ export default function Calculadora() {
          
          setTextNumber('0');
          setNumberOne('0');
-         setNumberTwo('0');
+         setNumberTwo(null);
+         setOperation(null);
+
      } else {
          setTextNumber(result);
      }
@@ -53,6 +55,15 @@ export default function Calculadora() {
  
 
 
+    }
+
+    function actionCalcular() {
+        if(numberTwo === null) {
+            return;
+        } 
+
+        const result = calcular(parseFloat(numberOne), parseFloat(numberTwo), operation);
+        setTextNumber(result)
     }
   
 
@@ -180,7 +191,7 @@ export default function Calculadora() {
             </Button>
           </Col>
           <Col xs={3}>
-            <Button variant="info" onClick={() => defineOperation("=")}>
+            <Button variant="info" onClick={actionCalcular}>
               =
             </Button>
           </Col>
