@@ -43,7 +43,7 @@ export default function ConversorMoedas() {
                     </Col>
 
                     <Col sm="2">
-                      <Button variant="dark" type="submit">
+                      <Button variant="dark" type="submit" style={{width: "120px"}}>
                         <Spinner animation="border" size="sm" style={{margin: "0 5px 0 0"}}/>
                            
                         
