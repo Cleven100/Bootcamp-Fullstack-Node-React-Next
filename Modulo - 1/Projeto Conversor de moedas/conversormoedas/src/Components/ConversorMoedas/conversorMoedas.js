@@ -2,25 +2,29 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Jumbotron, Button, Form, Col, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon, fontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ConversorMoedas() {
-  return ( 
+  return  (
          <div>
              <h1>Conversor de moedas</h1>
              <Jumbotron>
                <Form>
-                  <Form.row>
+                  <Form.Row>
 
                     <Col sm="3">
                       <Form.Control
                        placeholder="0"
-                       value={1} />                       
+                       value={1}
+                       style={{margin: "0 0 15px 0"}}  
+                          />   
+                                       
                     </Col>
 
                     <Col sm="3">
                       <Form.Control 
                         as="select"
+                        
                         />
                     </Col>
 
@@ -31,16 +35,22 @@ export default function ConversorMoedas() {
                     <Col sm="3">
                       <Form.Control
                        as="select"
+                       style={{margin: "0 0 15px 0"}}
                         />
                     </Col>
 
                     <Col sm="2">
+                      <Button variant="dark" type="submit">
+                        <Spinner animation="border" size="sm" style={{margin: "0 5px 0 0"}}/>
 
+                        
+                        Converter
+                      </Button>
                     </Col>
 
-                  </Form.row>
+                  </Form.Row>
                </Form>
-             </Jumbotron>
+             </Jumbotron> 
          </div>
   )
 }
