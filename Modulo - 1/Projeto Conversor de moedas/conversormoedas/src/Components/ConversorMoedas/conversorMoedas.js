@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Jumbotron, Button, Form, Col, Spinner, Alert } from "react-bootstrap";
+import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from "react-bootstrap";
 import { FontAwesomeIcon, fontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -53,6 +53,19 @@ export default function ConversorMoedas() {
 
                   </Form.Row>
                </Form>
+               <Modal show={false}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Conversao</Modal.Title>
+                  </Modal.Header>  
+                  <Modal.Body>
+                    Resultado da conversão aqui
+                  </Modal.Body>    
+                  <Modal.Footer>
+                     <Button variant="dark">
+                       Nova conversao
+                     </Button>
+                  </Modal.Footer>
+               </Modal>
              </Jumbotron> 
          </div>
   )
