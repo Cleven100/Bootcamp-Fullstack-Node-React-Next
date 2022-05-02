@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from "react-bootstrap";
 import { FontAwesomeIcon, fontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import ListarMoedas from "../ListarMoedas/listarMoedas";
 
 export default function ConversorMoedas() {
   return  (
