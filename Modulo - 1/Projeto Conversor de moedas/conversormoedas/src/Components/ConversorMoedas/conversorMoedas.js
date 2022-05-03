@@ -8,11 +8,20 @@ import ListarMoedas from "../ListarMoedas/listarMoedas";
 export default function ConversorMoedas() {
 
   const [valor, setValor] = useState('1');
+  const [moedaDe, setMoedaDe] = useState('BRL');
+  const [moedaPara, setMoedaPara] =  useState('USD');
 
   function handleValor(event) {
    setValor(event.target.value.replace(/\D/g, ''));
   }
 
+   function handleMoedaDe(event) {
+     setMoedaDe(event.target.value)
+   }
+
+   function handleMoedaPara(event) {
+     setMoedaPara(event.target.value)
+   }
 
   return  (
          <div>
@@ -37,7 +46,8 @@ export default function ConversorMoedas() {
                     <Col sm="3">
                       <Form.Control 
                         as="select"
-                        
+                        value={moedaDe}
+                        onChange={handleMoedaDe}
                         >
                           <ListarMoedas />
                         </Form.Control>
@@ -51,7 +61,8 @@ export default function ConversorMoedas() {
                       <Form.Control
                        as="select"
                        style={{margin: "0 0 15px 0"}}
-                       
+                       value={moedaPara}
+                       onChange={handleMoedaPara}
                         >
                           <ListarMoedas />
                         </Form.Control>

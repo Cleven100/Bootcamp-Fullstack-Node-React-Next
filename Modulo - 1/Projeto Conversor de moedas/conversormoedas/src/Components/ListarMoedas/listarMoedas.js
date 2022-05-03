@@ -3,7 +3,10 @@ import React from 'react';
 
 export default function ListarMoedas() {
   const MOEDAS = [
-     { "sigla": "AUB", "descricao": "Dolar australiano" }
+    { "sigla": "AUB", "descricao": "Dolar australiano" },
+    { "sigla": "BRL", "descricao": "Real brasileiro" },
+    { "sigla": "USD", "descricao": "Dolar americano" },
+    { "sigla": "EURO", "descricao": "Euro" }
     ];
      
     function compare(moedaOne, moedaTwo) {
