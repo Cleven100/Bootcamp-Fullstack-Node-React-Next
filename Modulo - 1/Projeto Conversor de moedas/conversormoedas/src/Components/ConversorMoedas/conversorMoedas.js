@@ -13,6 +13,8 @@ export default function ConversorMoedas() {
   const [moedaPara, setMoedaPara] =  useState('USD');
   const [exibirSpinner, setExibirSpinner] = useState(false);
   const [formValidado, setFormValidado] = useState(false);
+  const [exibirModal, setExibirModal] = useState(false);
+  const [resultadoConversao, setResultadoConversao] = useState('');
 
   function handleValor(event) {
    setValor(event.target.value.replace(/\D/g, ''));
@@ -30,11 +32,19 @@ export default function ConversorMoedas() {
      event.preventDefault();
      setFormValidado(true);
      if(event.currentTarget.checkValidity() === true) {
-       alert('Correcto');
+       setExibirModal(true)
      } else {
        alert('Bla bloifajisdpnjisvgdf'); 
      }
 
+   }
+
+   function handleFecharModal(event) {
+     setValor('1');
+     setMoedaDe('BRL');
+     setMoedaPara('USD');
+     setFormValidado(false);
+     setExibirModal(false);
    }
 
   return  (
@@ -97,15 +107,15 @@ export default function ConversorMoedas() {
 
                   </Form.Row>
                </Form>
-               <Modal show={false}>
+               <Modal show={exibirModal} onHide={handleFecharModal}>
                   <Modal.Header closeButton>
                     <Modal.Title>Conversao</Modal.Title>
                   </Modal.Header>  
                   <Modal.Body>
-                    Resultado da conversão aqui
+                    {resultadoConversao}
                   </Modal.Body>    
                   <Modal.Footer>
-                     <Button variant="dark">
+                     <Button variant="dark" onClick={handleFecharModal}>
                        Nova conversao
                      </Button>
                   </Modal.Footer>
