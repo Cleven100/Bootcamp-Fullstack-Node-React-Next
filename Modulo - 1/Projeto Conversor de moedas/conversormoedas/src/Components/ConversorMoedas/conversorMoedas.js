@@ -29,7 +29,9 @@ export default function ConversorMoedas() {
                       <Form.Control 
                         as="select"
                         
-                        />
+                        >
+                          <ListarMoedas />
+                        </Form.Control>
                     </Col>
 
                     <Col sm="1" className="text-center" style={{paddingTop:'5px'}}>
@@ -40,7 +42,10 @@ export default function ConversorMoedas() {
                       <Form.Control
                        as="select"
                        style={{margin: "0 0 15px 0"}}
-                        />
+                       
+                        >
+                          <ListarMoedas />
+                        </Form.Control>
                     </Col>
 
                     <Col sm="2">
