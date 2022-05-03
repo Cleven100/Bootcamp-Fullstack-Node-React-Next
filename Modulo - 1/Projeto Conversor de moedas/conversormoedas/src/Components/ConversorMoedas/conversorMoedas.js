@@ -4,12 +4,15 @@ import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from "react-boots
 import { FontAwesomeIcon, fontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import ListarMoedas from "../ListarMoedas/listarMoedas";
+import "./conversorMoedas.css"
 
 export default function ConversorMoedas() {
 
   const [valor, setValor] = useState('1');
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] =  useState('USD');
+  const [exibirSpinner, setExibirSpinner] = useState(false);
+  const [formValidado, setFormValidado] = useState(false);
 
   function handleValor(event) {
    setValor(event.target.value.replace(/\D/g, ''));
@@ -23,6 +26,17 @@ export default function ConversorMoedas() {
      setMoedaPara(event.target.value)
    }
 
+   function converter(event) {
+     event.preventDefault();
+     setFormValidado(true);
+     if(event.currentTarget.checkValidity() === true) {
+       alert('Correcto');
+     } else {
+       alert('Bla bloifajisdpnjisvgdf'); 
+     }
+
+   }
+
   return  (
          <div>
              <h1 style={{margin: '10px'}}>Conversor de moedas</h1>
@@ -30,7 +44,7 @@ export default function ConversorMoedas() {
                Erro obtendo dados de conversao , tente novamente.
              </Alert>
              <Jumbotron style={{margin: '10px'}}>
-               <Form >
+               <Form onSubmit={converter} noValidate validated={formValidado}>
                   <Form.Row >
 
                     <Col sm="3">
@@ -70,10 +84,14 @@ export default function ConversorMoedas() {
 
                     <Col sm="2">
                       <Button variant="dark" type="submit" style={{width: "120px"}}>
+                        <span className={exibirSpinner ? null : 'hidden'}>
                         <Spinner animation="border" size="sm" style={{margin: "0 5px 0 0"}}/>
-                           
+                           </span>
+                           <span className={exibirSpinner ? 'hidden' : null}>
+                             Converter
+                           </span>
                         
-                        Converter
+                        
                       </Button>
                     </Col>
 
