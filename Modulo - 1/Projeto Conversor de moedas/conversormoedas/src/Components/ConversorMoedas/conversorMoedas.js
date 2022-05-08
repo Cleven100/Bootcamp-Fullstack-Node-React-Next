@@ -8,6 +8,8 @@ import "./conversorMoedas.css"
 
 export default function ConversorMoedas() {
 
+
+
   const [valor, setValor] = useState('1');
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] =  useState('USD');
@@ -24,15 +26,27 @@ export default function ConversorMoedas() {
      setMoedaDe(event.target.value)
    }
 
+   const pesquisarMoedas = async () =>{
+      const url = 'http://data.fixer.io/api/latest?access_key=eba7130a5b2d720ce43eb5fcddd47cc3';
+
+      const dados = await fetch(url);
+
+      const moedas = await dados.json();
+
+      console.log(moedas.rates)
+
+      
+   }
+
    function handleMoedaPara(event) {
      setMoedaPara(event.target.value)
    }
 
-   function converter(event) {
+   function converter(event, moedas) {
      event.preventDefault();
      setFormValidado(true);
      if(event.currentTarget.checkValidity() === true) {
-       setExibirModal(true)
+       pesquisarMoedas();
      } else {
        alert('Bla bloifajisdpnjisvgdf'); 
      }
