@@ -1,4 +1,4 @@
-//EXEMPLO DO CÓDIGO PARA UM PRODUTO
+//EXEMPLO DO CÓDIGO PARA UM PRODUTO min: 31:17
 
 (async function  () {
   let response = await fetch(`data/products.json`);
@@ -32,19 +32,20 @@ function loadDetails(product) {
 
   let details = ["brand", "price", "product_type", "category", "rating"];
 
-  Object.entries(product).filter(([name, value]) => details.includes(name))
+  return Object.entries(product).filter(([name, value]) => details.includes(name)).map(([name,value]) => {
 
-
-
-  `
+     `
     <div class="details-row">
-        <div>Brand</div>
+        <div>${name}</div>
         <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">nyx
+          <div class="details-bar-bg" style="width= 250">${value}
           </div>
         </div>
 
        `;
+
+  }).join("");
+
 }
 
 Array.prototype.uniq = function() {
