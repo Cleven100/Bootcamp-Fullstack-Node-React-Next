@@ -1,17 +1,29 @@
-//EXEMPLO DO CÓDIGO PARA UM PRODUTO min: 31:17
+
 
 (async function  () {
   let response = await fetch(`data/products.json`);
   let product = await response.json();
   
-productItem(product);
+loadProducts(product, "Melhores Avaliados" )
  
 })();
 
+const productElement = document.querySelector(".catalog");
 
+function loadProducts(json, sortType) {
+
+  let view = sortProducts(json, sortType).map((product) => productItem(product)).join("");
+   
+    productElement.innerHTML = view;
+
+}
+
+function loadComboOptions(combo, data) {
+  data.map((opt) => combo.insertAdjacentHTML("beforeend", `<option>${opt}</option>`));
+}
 
 function productItem(product) {
-  const item = `<div class="product" data-name="${product.name}" data-brand="${product.brand}" data-type="${product.product_type}" tabindex="${product.id}">
+  return `<div class="product" data-name="${product.name}" data-brand="${product.brand}" data-type="${product.product_type}" tabindex="${product.id}">
   <figure class="product-figure">
     <img src="${product.image_link}" width="215" height="215" alt="${product.name}" onerror="javascript:this.src='img/unavailable.png'">
   </figure>
@@ -46,6 +58,33 @@ function loadDetails(product) {
 
   }).join("");
 
+}
+
+function sortProducts(products, sortType) {
+
+
+   switch(sortType) {
+     case "Melhores Avaliados":
+        return products.sort((a,b) => {
+          a.rating  > b.rating ?  -1 : a.rating < b.rating ? 1 : 0;
+         });
+     case "Menores Preços":
+        return products.sort((a,b) => {
+          parseFloat(a.price)  > parseFloat(b.price) ?  1 : parseFloat(a.price) < parseFloat(b.price) ? -1 : 0;
+         });
+     case "Maiores Preços":
+        return products.sort((a,b) => {
+          parseFloat(a.price)  > parseFloat(b.price) ?  -1 : parseFloat(a.price) < parseFloat(b.price) ? 1 : 0;
+         });
+     case "A-Z":
+        return products.sort((a,b) => {
+          a.name  > b.name ?  1 : a.name < b.name ? -1 : 0;
+         });
+     case "Z-A":
+        return products.sort((a,b) => {
+          a.name  > b.name ?  -1 : a.name < b.name ? 1 : 0;
+         });           
+   }
 }
 
 Array.prototype.uniq = function() {
