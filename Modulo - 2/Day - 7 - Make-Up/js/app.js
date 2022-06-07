@@ -1,10 +1,17 @@
+const filterBrand = document.getElementById("filter-brand");
+const filterType = document.getElementById("filter-type");
+const filterName = document.getElementById("filter-name");
+const comboSort = document.getElementById("sort-type");
 
+let productBrands = [];
+let productTypes = [];
+let products = "";
 
 (async function  () {
   let response = await fetch(`data/products.json`);
   let product = await response.json();
   
-loadProducts(product, "Melhores Avaliados" )
+loadProducts(product, comboSort.value )
  
 })();
 
@@ -16,6 +23,11 @@ function loadProducts(json, sortType) {
    
     productElement.innerHTML = view;
 
+    loadComboOptions(filterBrand, productBrands.uniq().sort());
+    loadComboOptions(filterType, productTypes.uniq().sort());
+
+    products = json;
+
 }
 
 function loadComboOptions(combo, data) {
@@ -23,6 +35,11 @@ function loadComboOptions(combo, data) {
 }
 
 function productItem(product) {
+ 
+  productBrands = productBrands.concat([product.brand]);
+  productTypes = productTypes.concat([product.product_type]);
+
+
   return `<div class="product" data-name="${product.name}" data-brand="${product.brand}" data-type="${product.product_type}" tabindex="${product.id}">
   <figure class="product-figure">
     <img src="${product.image_link}" width="215" height="215" alt="${product.name}" onerror="javascript:this.src='img/unavailable.png'">
@@ -85,6 +102,19 @@ function sortProducts(products, sortType) {
           a.name  > b.name ?  -1 : a.name < b.name ? 1 : 0;
          });           
    }
+}
+
+
+filterBrand.addEventListener("change", loadFilters());
+filterType.addEventListener("change", loadFilters());
+filterName.addEventListener("keyup", loadFilters());
+comboSort.addEventListener("change", (e) => {
+  loadProducts(producsts, comboSort.value);
+  loadFilters();
+})
+
+function loadFilters() {
+
 }
 
 Array.prototype.uniq = function() {
