@@ -48,11 +48,17 @@ function updateDOM(providedData = data) {
     const element = document.createElement('div');
     element.classList.add('person');
     element.innerHTML = `<strong>${item.name}</strong>
-    ${item.money} `;
+    ${formatMoney(
+      item.money 
+      )} `;
     main.appendChild(element);
   }); 
 
 }
 
+function formatMoney(number) {
+ return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 
+addUserBtn.addEventListener('click', getUser);
 
