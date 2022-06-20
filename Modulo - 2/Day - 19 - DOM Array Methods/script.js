@@ -26,6 +26,18 @@ const getUser = (async () => {
 
 })
 
+
+function doubleMoney() {
+  data = data.map((user) => {
+    return {
+       ...user, money: user.money * 2
+    }
+  });
+
+  updateDOM();
+}
+
+
 getUser();
 getUser();
 getUser();
@@ -61,4 +73,5 @@ function formatMoney(number) {
 }
 
 addUserBtn.addEventListener('click', getUser);
+doubleBtn.addEventListener('click', doubleMoney);
 
