@@ -37,6 +37,17 @@ function doubleMoney() {
   updateDOM();
 }
 
+function sortByRichest() {
+  data.sort((a,b) => b.money - a.money);
+  updateDOM();
+}
+
+function showMillionaires() {
+  data = data.filter(user => user.money > 1000000);
+
+  updateDOM();
+}
+
 
 getUser();
 getUser();
@@ -74,4 +85,6 @@ function formatMoney(number) {
 
 addUserBtn.addEventListener('click', getUser);
 doubleBtn.addEventListener('click', doubleMoney);
+sortBtn.addEventListener('click', sortByRichest);
+showMillionairesBtn.addEventListener('click', showMillionaires);
 
