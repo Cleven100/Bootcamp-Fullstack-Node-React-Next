@@ -2,7 +2,7 @@ import React from 'react'
 import DashboardWrapper, { DashboardWrapperRight, DashboardWrapperMain} from '../components/dashboard-wrapper/DashboardWrapper'
 import { data } from '../constants'
 import Box from '../components/box/Box'
-import SummaryBox from '../components/summary-box/SummaryBox'
+import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
 
 const Dashboard = () => {
   return (
@@ -20,6 +20,9 @@ const Dashboard = () => {
                         ))
                        }
                     </div>
+                 </div>
+                 <div className="col-4 hide-md">
+                   <SummaryBoxSpecial item={data.revenueSummary} />
                  </div>
               </div>
           </DashboardWrapperMain>
