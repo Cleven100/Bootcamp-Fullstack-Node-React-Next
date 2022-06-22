@@ -24,6 +24,8 @@
         font-size: $fontSizeMedium;
         font-weight: 700;
 
-        @include tablet
+        @include tablet {
+            padding: 0 $mobileSpacing;
+        }
     }
 }

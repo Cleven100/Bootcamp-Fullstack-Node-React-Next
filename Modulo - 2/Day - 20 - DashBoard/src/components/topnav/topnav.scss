@@ -16,6 +16,11 @@
 
     @include flex(center, center);
     cursor: pointer;
+    display: none;
+
+    @include tablet {
+        display: flex;
+    }
 
     i {
         font-size: 3rem;
