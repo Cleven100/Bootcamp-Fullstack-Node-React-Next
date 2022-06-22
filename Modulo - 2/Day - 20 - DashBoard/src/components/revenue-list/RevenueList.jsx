@@ -1,5 +1,6 @@
 import React from 'react'
 import { data } from '../../constants'
+import ProgressBar from '../progressbar/ProgressBar'
 import './revenuelist.scss'
 
 const RevenueList = () => {
@@ -17,7 +18,7 @@ const RevenueList = () => {
                       </span>
                    </div>
                    <div>
-                      
+                      <ProgressBar value={item.value}/>
                    </div>
                 </li>
             ))
