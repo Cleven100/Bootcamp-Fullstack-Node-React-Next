@@ -74,7 +74,7 @@ const controls = {
 }
 
 const list = {
-    create() {},
+    create(item) {},
     update() {}
  }
 
