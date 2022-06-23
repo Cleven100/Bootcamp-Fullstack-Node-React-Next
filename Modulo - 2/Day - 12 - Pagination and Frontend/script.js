@@ -7,16 +7,22 @@ function populateList() {
    
   return data;
 };
-
 const data = populateList();
+// ============================
 
-let perPage = 10
-
+let perPage = 10;
 const state = {
     page: 1,
     perPage,
     totalPage: Math.ceil(data.length / perPage)
 }
+const html = {
+    get(element) {
+        return document.querySelector(element)
+    }
+}
+
+
 
 const controls = {
   next() {
@@ -34,6 +40,46 @@ const controls = {
     }
   },
   goTo() {
+ 
+    if(page < 1) {
+        page = 1;
+    }
+
     state.page = page
+
+    if(page > state.totalPage) {
+        state.page = state.totalPage
+    }
+
+
+  },
+  createListeners() {
+    html.get('.first').addEventListener('click', () => {
+        controls.goTo(1)
+        
+     })
+
+     html.get('.last').addEventListener('click', () => {
+        controls.goTo(state.totalPage)
+
+        html.get('.next').addEventListener('click', () => {
+            controls.next()
+         })
+
+         html.get('.prev').addEventListener('click', () => {
+            controls.prev()
+         })
+     })
   }
+}
+
+const list = {
+    create() {},
+    update() {}
+ }
+
+controls.createListeners();
+
+function init() {
+    controls.createListeners()
 }
