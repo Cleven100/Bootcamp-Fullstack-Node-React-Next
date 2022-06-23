@@ -20,7 +20,8 @@ const Dashboard = () => {
   return (
     <div>
        <h1>Dashboard</h1>
-       <Chart 
+       <div className="piechart">
+        <Chart 
            width={'400px'}
            height={'300px'}
            chartType={'PieChart'}
@@ -38,6 +39,62 @@ const Dashboard = () => {
             title: TITULO,
             is3D: true
            }} />
+
+           <Chart 
+           width={'400px'}
+           height={'300px'}
+           chartType={'PieChart'}
+           data={dados}
+           options={{
+            title: TITULO,
+            pieHole: 0.4
+           }} />
+       </div>
+
+       <div className="barchart">
+          <Chart 
+           width={'400px'}
+           height={'300px'}
+           chartType={'BarChart'}
+           data={dados}
+           options={{
+            title: TITULO,
+            chartArea: {width: '50%'},
+            hAxis: { title: 'Quantidade'},
+            vAxis: { title: 'Mês'},
+            animation: { duration: 1000, easing: 'out', startup: true}
+           }} />
+
+           <Chart 
+           width={'400px'}
+           height={'300px'}
+           chartType={'LineChart'}
+           data={dados}
+           options={{
+            title: TITULO,
+            chartArea: {width: '50%'},
+            hAxis: { title: 'Quantidade'},
+            vAxis: { title: 'Mês'},
+            animation: { duration: 1000, easing: 'out', startup: true}
+           }} />  
+
+           <Chart 
+           width={'400px'}
+           height={'300px'}
+           chartType={'AreaChart'}
+           data={dados}
+           options={{
+            title: TITULO,
+            chartArea: {width: '50%'},
+            hAxis: { title: 'Quantidade'},
+            vAxis: { title: 'Mês'},
+            animation: { duration: 1000, easing: 'out', startup: true}
+           }} />  
+
+       
+      </div>
+
+       
         
         
     </div>
