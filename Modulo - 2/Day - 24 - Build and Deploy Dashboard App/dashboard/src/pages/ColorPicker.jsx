@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ColorPick = () => {
+const ColorPicker = () => {
   return (
     <div>ColorPicker</div>
   )

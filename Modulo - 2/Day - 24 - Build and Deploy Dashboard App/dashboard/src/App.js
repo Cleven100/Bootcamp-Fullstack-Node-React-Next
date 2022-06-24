@@ -4,12 +4,12 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import {Navbar, Footer, Sidebar, ThemeSettings} from './components';
-import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor} from './pages';
+import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line} from './pages';
 import './App.css';
 
 const App = () => {
  
-  const activeMenu = false;
+  const activeMenu = true;
 
 
   return (
@@ -51,9 +51,9 @@ const App = () => {
             <Routes>
               {/* dashboard */}
             <Route path="/"
-               element={<ECommerce />} />
+               element={<Ecommerce />} />
             <Route path="/ecommerce"
-               element={<ECommerce />} /> 
+               element={<Ecommerce />} /> 
 
                 {/* pages */}
                <Route path="/Orders"
@@ -69,7 +69,7 @@ const App = () => {
                <Route path="/editor"
                element={<Editor />} />
                <Route path="/calendar"
-               element={<Calender />} />
+               element={<Calendar />} />
                <Route path="/color-picker"
                element={<ColorPicker />} />
             
