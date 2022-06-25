@@ -2,7 +2,9 @@ import React from 'react'
 
 const Player = () => {
   return (
-    <div>Player</div>
+    <div className='flex-1'>
+      Player
+    </div>
   )
 }
 
