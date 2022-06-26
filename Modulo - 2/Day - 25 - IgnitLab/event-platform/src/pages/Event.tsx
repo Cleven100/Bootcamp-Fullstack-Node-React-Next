@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import Player from '../components/Player'
+import Movie from '../components/Movie'
 import Sidebar from '../components/Sidebar'
 
 const Event = () => {
@@ -8,7 +8,7 @@ const Event = () => {
     <div className='flex flex-col min-h-screen'>
         <Header />
         <main className='flex flex-1'>
-            <Player />
+            <Movie />
             <Sidebar />
         </main>
         

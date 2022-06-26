@@ -1,10 +1,18 @@
 import { DiscordLogo, Lightning, FileArrowDown, CaretRight  } from "phosphor-react";
+import { DefaultUi, Player, Youtube } from "@vime/react";
 
-const Player = () => {
+import '@vime/core/themes/default.css'
+
+const Movie = () => {
   return (
     <div className='flex-1'>
       <div className="bg-black flex justify-center">
-        <div className='h-full w-full max-w-[1100px] max-h-[60vh] aspect-video'></div>
+        <div className='h-full w-full max-w-[1100px] max-h-[60vh] aspect-video'>
+          <Player>
+            <Youtube videoId="NoxGFqUIBSY"/>
+            <DefaultUi />
+          </Player>
+        </div>
         </div>
 
         <div className='p-8 max-w-[1100px] mx-auto'>
@@ -34,7 +42,7 @@ const Player = () => {
                   Acesse o desafio</a>   
              </div>
            </div>
-           <div className="gap-8 mt-20 grid-cols-2">
+           <div className="gap-8 mt-20 grid-cols-2 flex">
            <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
                 <div className="bg-green-700 h-700 p-6 flex items-center">
                   <FileArrowDown size={40}/>
@@ -55,9 +63,9 @@ const Player = () => {
                   <FileArrowDown size={40}/>
                 </div>
                 <div className="py-6 leading-relaxed">
-                  <strong className="text-2xl">Material complementar</strong>
+                  <strong className="text-2xl">Wallpepars exclusivos</strong>
                   <p className="text-sm text-gray-200 mt-2">
-                     Acesse o material complementar para acelerar o seu desenvolvimento
+                     Baixe wallpapers exclusivos
                   </p>
                 </div>
                 <div className="h-full p-6 flex items-center">
@@ -72,4 +80,4 @@ const Player = () => {
   )
 }
 
-export default Player
+export default Movie
