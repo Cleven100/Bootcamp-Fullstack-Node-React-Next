@@ -10,8 +10,15 @@ import { links } from '../data/dummy';
 
 
 const Sidebar = () => {
+  const activeMenu = true;
+
   return (
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto">
+    <div className="ml-3 h-screen
+     md:overflow-hidden overflow-auto
+    md:hover:overflow-auto pb-10">
+    {activeMenu && (<>
+    <div className='flex justify-between items-center'></div>
+    </>)}
 
     </div>
   )
