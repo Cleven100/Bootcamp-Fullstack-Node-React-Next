@@ -17,39 +17,36 @@ function productItem(product) {
     <div class="product-brands"><span class="product-brand background-brand">${product.brand}</span>
 <span class="product-brand background-price">R$ ${(parseFloat(product.price) * 5.5).toFixed(2)}</span></div>
   </section>
-  // CARREGAR OS DETALHES
+   ${loadDetails(product)}
+  <section class="product-details">
+   
+  </section>
+
 </div>`;
 }
 
 //EXEMPLO DO CÓDIGO PARA OS DETALHES DE UM PRODUTO
 function loadDetails(product) {
-  let details = `<section class="product-details"><div class="details-row">
-        <div>Brand</div>
+
+  let datails = ["brand" , "price", "product_type", "category", "rating"];
+
+  Object.entries(product).filter(([name, value]) => datails.includes(name)).map(([name, value]) => {
+
+    `<div class="details-row">
+        <div>${name}</div>
         <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">nyx</div>
+          <div class="details-bar-bg" style="width= 250">${value}</div>
         </div>
-      </div><div class="details-row">
-        <div>Price</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">10.49</div>
-        </div>
-      </div><div class="details-row">
-        <div>Rating</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">5</div>
-        </div>
-      </div><div class="details-row">
-        <div>Category</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250"></div>
-        </div>
-      </div><div class="details-row">
-        <div>Product_type</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">bronzer</div>
-        </div>
-      </div></section>`;
+      </div>
+     `;
+
+  }).join("");
+
+  
+  
 }
+
+
 
 
 Array.prototype.uniq = function () {
