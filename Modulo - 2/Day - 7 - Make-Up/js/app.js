@@ -1,13 +1,21 @@
-//EXEMPLO DO CÓDIGO PARA UM PRODUTO
+( async function  () {
+   const response = await fetch('data/products.json');
+   const data = await response.json(); 
+
+   console.log(data);
+}
+)();
+
+
 function productItem(product) {
-  const item = `<div class="product" data-name="NYX Mosaic Powder Blush Paradise" data-brand="nyx" data-type="bronzer" tabindex="508">
+  const item = `<div class="product" data-name="${product.name}" data-brand="${product.brand}" data-type="${product.product_type}" tabindex="${product.id}">
   <figure class="product-figure">
-    <img src="https://d3t32hsnjxo7q6.cloudfront.net/i/deedb7bd74bda43f062a09aab2ee1ec8_ra,w158,h184_pa,w158,h184.png" width="215" height="215" alt="NYX Mosaic Powder Blush Paradise" onerror="javascript:this.src='img/unavailable.png'">
+    <img src="${product.image_link}" width="215" height="215" alt="${product.name}" onerror="javascript:this.src='img/unavailable.png'">
   </figure>
   <section class="product-description">
-    <h1 class="product-name">NYX Mosaic Powder Blush Paradise</h1>
-    <div class="product-brands"><span class="product-brand background-brand">Nyx</span>
-<span class="product-brand background-price">R$ 57.70</span></div>
+    <h1 class="product-name">${product.name}</h1>
+    <div class="product-brands"><span class="product-brand background-brand">${product.brand}</span>
+<span class="product-brand background-price">R$ ${(parseFloat(product.price) * 5.5).toFixed(2)}</span></div>
   </section>
   // CARREGAR OS DETALHES
 </div>`;
@@ -42,3 +50,14 @@ function loadDetails(product) {
         </div>
       </div></section>`;
 }
+
+
+Array.prototype.uniq = function () {
+ return this.filter(function(value, index, self) {
+   return self.indexOf(value) === index;
+ });
+};
+
+String.prototype.capitalize = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
