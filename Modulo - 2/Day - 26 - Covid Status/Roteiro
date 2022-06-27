@@ -1,0 +1,15 @@
+Checklist Segunda aula ✓
+
+( ) Desafio: Página Inicial - Fetch informacoes globais (Summary)
+https://api.covid19api.com/summary
+( ) Desafio: Página Inicial - Lógica para preenchimento dos KPIs
+( ) Desafio: Página Inicial - Lógica para preenchimento do gráfico de barras
+( ) Desafio: Página Inicial - Lógica para preenchimento do gráfico de pizza
+( ) Desafio: Página Countries - Adicionar o manipulador no filtro
+( ) Desafio: Página Countries - Fetch dados default KPI e Gráfico de linhas
+https://api.covid19api.com/countries
+`https://api.covid19api.com/country/Brazil?from=${new Date(2021, 04, 01, -3, 0, 0).toISOString()}&to=${new Date(2021, 04, 25, -3, 0, 0).toISOString()}`
+( ) Desafio: Página Countries - Carrega os countries no combo
+( ) Desafio: Página Countries - Lógica para preenchimento dos KPIs
+( ) Desafio: Página Countries - Lógica para preenchimento do gráfico de linhas
+( ) Desafio: Página Countries - Lógica do manipulador do filtro
