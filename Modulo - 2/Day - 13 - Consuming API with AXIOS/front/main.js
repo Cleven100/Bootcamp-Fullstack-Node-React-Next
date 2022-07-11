@@ -25,4 +25,4 @@ function addNewUser() {
     .catch(error => console.log(error))
 }
 
-addNewUser()
+//addNewUser()
