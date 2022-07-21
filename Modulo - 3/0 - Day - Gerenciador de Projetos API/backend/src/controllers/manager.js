@@ -23,6 +23,16 @@ const order = require.query['order'];
 const filteTasl = require.query['filter-task'];
 const itensPerPag = require.query['itens-por-pagina'] || 3;
 
+let tasksReturn = tasks.slice(0);
+
+if(tasksReturn) {
+    tasksReturn = tasksReturn.filter(
+      t => t.nome.toLowerCase().indexOf(filterTasks.toLowerCase()) === 0
+    );
+}
+
+
+
 }
 
 module.exports = {
