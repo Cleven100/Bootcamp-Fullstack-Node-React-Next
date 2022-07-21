@@ -31,7 +31,19 @@ if(tasksReturn) {
     );
 }
 
+if(order === 'ASC') {
 
+    tasksReturn.sort((t1, t2) => (t1.nome.toLowerCase() > t2.name.toLowerCase()) ? 1 : -1);
+
+} else if (order === 'DESC') {
+    tasksReturn.sort((t1, t2) => (t1.nome.toLowerCase() < t2.name.toLowerCase()) ? 1 : -1);
+}
+
+response.json({
+    totalITens: tasksReturn.length,
+    tasks: tasksReturn.slice(0).splice((pag - 1) * itensPerPag, itensPerPag),
+    pag: pag
+})
 
 }
 
