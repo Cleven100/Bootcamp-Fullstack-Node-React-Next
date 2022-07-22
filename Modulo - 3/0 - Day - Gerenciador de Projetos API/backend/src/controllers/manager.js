@@ -1,10 +1,10 @@
 const uuid = require('uuid');
 
 let tasks = [
-    { id: '1', nome: 'Learn React', conclude: true},
-    { id: '2', nome: 'Learn Design patterns', conclude: true},
-    { id: '4', nome: 'Learn Typescript', conclude: true},
-    { id: '4', nome: 'Learn Node.js', conclude: true}
+    { id: '1', name: 'Learn React', conclude: true},
+    { id: '2', name: 'Learn Design patterns', conclude: true},
+    { id: '4', name: 'Learn Typescript', conclude: true},
+    { id: '4', name: 'Learn Node.js', conclude: true}
     
 ];
 
@@ -25,7 +25,7 @@ const itensPerPag = require.query['itens-por-pagina'] || 3;
 
 let tasksReturn = tasks.slice(0);
 
-if(tasksReturn) {
+if(filterTasks) {
     tasksReturn = tasksReturn.filter(
       t => t.nome.toLowerCase().indexOf(filterTasks.toLowerCase()) === 0
     );
@@ -47,7 +47,21 @@ response.json({
 
 }
 
+function registerTask(require, response) {
+if(!require.body['name'] && !require.body['conclude']) {
+    response.status(400).json({erro: 'Request invalid'})
+}
+const task = {
+    id: uuid(),
+    name: require.body['nome'],
+    conclude: require.body['conclude']
+};
+tasks.push(task);
+response.json(task);
+}
+
 module.exports = {
     listTaskId,
-    listTasks
+    listTasks,
+    registerTask
 }

@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
-const { listTaskId, listTasks } = require('./controllers/manager.js');
+const { listTaskId, listTasks, registerTask } = require('./controllers/manager.js');
 
 const app = express();
 const port = 3001;
