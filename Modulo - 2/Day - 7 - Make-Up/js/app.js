@@ -8,8 +8,8 @@ let productTypes = [];
 let products = "";
 
 (async () => {
-  let response = await fetch("http://localhost:8080/sales");
-  console.log(await response.json());
+  let response = await fetch("data/products.json");
+  loadProducts(await response.json(), comboSort.value);
 })();
 
 const productElement = document.querySelector(".catalog");
