@@ -20,3 +20,9 @@ const dummyTransactions = [
 
 let transaction = dummyTransactions;
 
+
+function addTransactionDOM(transaction) {
+    const sign = transaction.amount < 0 ? '-' : '+';
+
+    const item = document.createElement('li');
+}
