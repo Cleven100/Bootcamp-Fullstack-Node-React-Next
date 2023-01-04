@@ -1,0 +1,26 @@
+react-investments - roteiro
+===========================
+
+(x) Clonar projeto base
+(x) Renomear cópia para react-investments-aula
+(x) Utilizar .env
+(x) Renomear projeto em App.jsx e index.html
+(x) Instalar dependências
+(x) "Subir" projeto
+
+(x) Criar "fake backend" em memória:
+   (x) investments
+   (x) reports
+   (x) backEnd (investments em ordem alfabética,
+      filtrando as respectivas "reports" ordenadas por mês e calculando
+      o percentual de rendimento)
+
+() App.jsx
+   () Listar nomes dos fundos
+   () Componentizar código atual
+      () Header
+      () Main
+      () Investments
+      () Investment
+
+() Revisar estilização

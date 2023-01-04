@@ -6,23 +6,58 @@ const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 
-
-const dummyTransactions = [
-    
-    {id: 1, text: 'flower', amount: -20 }
-    {id: 2, text: 'gold', amount: 10000 }
-    {id: 3, text: 'Book', amount: -300 }
-    {id: 4, text: 'Dish', amount: -500 }
-    {id: 5, text: 'Movies', amount: -100 }
-    {id: 6, text: 'flower', amount: -20 }
-    
-];
-
-let transaction = dummyTransactions;
+ const dummyTransactions = [
+  { id: 1, text: 'Flower', amount: -20 },
+  { id: 2, text: 'Salary', amount: 300 },
+  { id: 3, text: 'Book', amount: -10 },
+   { id: 4, text: 'Camera', amount: 150 }
+ ];
 
 
+let transactions = dummyTransactions;
+  
+
+// Add transaction
 function addTransactionDOM(transaction) {
-    const sign = transaction.amount < 0 ? '-' : '+';
+  
+  const sign = transaction.amount < 0 ? '-' : '+';
+  const item = document.createElement('li');
 
-    const item = document.createElement('li');
+  item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
+
+  item.innerHTML = `
+   ${transaction.text } <span> ${sign} ${Math.abs(transaction.amount)} </span> 
+   <button class="delete-btn">x</button>
+  `
+  
+
+    transactions.push(item);
+
+   
+
+    
+  }
+
+
+// Generate random ID
+
+
+// Update the balance, income and expense
+
+// Remove transaction by ID
+
+
+// Update local storage transactions
+
+
+// Init app
+function init() {
+  list.innerHTML = '';
+
+  transactions.forEach(addTransactionDOM);
+
 }
+
+init();
+
+

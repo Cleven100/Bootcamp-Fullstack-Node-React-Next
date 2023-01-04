@@ -1,0 +1,61 @@
+react-flash-cards-v3 - roteiro
+==============================
+
+() Criar novo app a partir do react-flash-cards-v2
+() Inicializar tanto o Front End quanto o Back End
+() Trocar cor do Header
+
+() Trocar nome do app em index.html e em 
+   FlashCardsPage para react-flash-cards-v3
+
+() Explicar que o Back End atual funciona bem 
+   localmente, mas não é muito útil "em nuvem"
+
+() Utilizar o serviço https://glitch.com 
+   para montar o mesmo Back End local
+   () Criar conta (se não possuir)
+   () Criar um projeto "express"
+   () Remanejar arquivos para suportar o "json-server"
+   () Testar
+
+() Mudar referência em apiService para utilizar 
+   o Back End do Glitch 
+
+() App em modo de produção
+   
+   () Mostrar scripts extras em package.json
+   () Executar yarn prod:local
+   () Mostrar conteúdo da pasta "build"
+
+() Upload do app para o Netlify
+
+   () Criar conta (se não possuir) em 
+      https://netlify.com
+
+   () Instalar o pacote do Netlify com 
+      npm i -g netlify-cli@3.29.14
+
+   () Vincular conta com o comando "netlify login"
+   () Executar script "yarn prod:cloud"
+
+   () Verificar se tudo ocorreu bem 
+      com o comando "netlify status"
+
+() Implementar mensagens amigáveis com 
+   a biblioteca "react-toastify" - 
+   https://github.com/fkhadra/react-toastify
+
+() Refazer o deploy
+
+() Verificar ambiente de desenvolvimento / produção 
+   com "process.env.NODE_ENV"
+
+() Fazer com que utilizemos o back end local 
+   durante o desenvolvimento 
+   
+() Refazer o deploy
+
+() Limpar o app para disponibilização, 
+   removendo arquivos "desnecessários",
+   como por exemplo a pasta "node_modules". 
+   Use a biblioteca rimraf para isso

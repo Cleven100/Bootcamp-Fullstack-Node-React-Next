@@ -1,0 +1,88 @@
+Roteiro - react-hello
+=====================
+
+() Obter projeto-base, renomear pasta para "react-hello" e
+   instalar dependências com o comando "yarn"
+
+() Repassar rapidamente o projeto "react-hello" inicial
+   (cópia do "projeto-base")
+
+() Utilizar .env
+
+() Abrir projeto com "yarn dev"
+
+() Instalar "React Developer Tools" no Google Chrome
+
+() App.js
+   () Falar sobre JSX
+   () Falar de class x className e for x htmlFor
+   () Falar sobre abertura e fechamento de tags
+   () Trocar título para react-hello em App.js e index.html 
+   () Remover conteúdo atual de <main>
+   () Incluir, em <main>, um parágrafo para renderizar 
+      nome + idade
+   () Mostrar como interpolar dados no JSX através 
+      da sintaxe de chaves { }
+
+   () Componentizar <Header> e <Main>, explicando o  
+      conceito de "props"
+      () Criar Header "na mão"
+      () Criar Main com o apoio do snippet "_rfc"
+
+	  () Criar props com string, boolean, number,
+	     array, object e função (evento)
+
+   () Falar sobre a necessidade de interação do usuário.
+      No React, isso pode ser feito com a utilização 
+      de estado (state) e o hook useState
+
+   () Criar, em <main>, um input de texto 
+
+   () Tentar, de alguma forma, manipular o valor do 
+      input e refletí-lo no parágrafo
+
+   () Explicar o conceito de state em React
+   () Criar state para "name" com o Hook useState
+   () Fazer com que o input leia e altere "name" 
+
+   () Componentizar o input de name
+   
+   () Criar input do tipo "date" e persistir 
+      estado para "birthDate"
+
+      () Criar função para calcular idade a partir 
+         da data de nascimento
+		 
+      () Verificar que o input do tipo date 
+         trabalha com strings no formato yyyy-mm-dd 
+
+      () Verificar que o input permite datas inválidas (ex: 30/02). 
+         Controlar isso, inserindo o texto '?' para a idade
+
+   () Refatorar componentes de input para utilizar a prop
+      id e autoFocus corretamente
+
+   () Explicar o conceito de "efeito colateral" (side effect)
+
+   () Criar useEffect para incluir o nome digitado no título da aba
+   
+      () Mostrar effect sem deps e enfatizar que ele vai ser 
+         executado "além do necessário" com a troca de state 
+         do input de data 
+
+      () Mostrar effect com deps === [] e enfatizar que ele vai executar 
+         somente uma vez, o que não é o caso 
+
+      () Mostrar effect com deps === [name] e enfatizar que é o ideal 
+         neste caso
+
+  () Criar componente <Timer /> para ser exibido/removido com 
+     checkbox. Demonstrar exigência da limpeza do intervalo 
+     com o retorno da função de useEffect
+		 
+  () Revisar componentes com o React Developer Tools
+
+  () Criar useEffect para indicar que o app está online/offline
+
+  () Limpar o app para disponibilização, removendo arquivos "desnecessários",
+     como por exemplo a pasta "node_modules". Use a biblioteca rimraf para isso.

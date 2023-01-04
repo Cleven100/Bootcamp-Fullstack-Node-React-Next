@@ -1,0 +1,36 @@
+react-flash-cards-v1 - roteiro
+==============================
+
+() Criar novo app a partir do projeto base
+
+() Reaproveitar componentes de projetos anteriores 
+   sempre que possível
+
+() Criar FlashCardsPage e utilizar em App
+() Criar componente FlashCard e testar em FlashCardsPage
+() Renderizar alguns FlashCards "na mão"
+() Utilizar flashcards.json como variável
+
+() Transformar os dados dos flashcards para que possuam
+   id e que fiquem ordenados pelo título
+
+() Renderizar a partir do array de flashcards com .map 
+
+() Criar estado no app para flashCards (Array) 
+   e showDescription (Boolean)
+
+() Criar botão para embaralhar os cards com base em:
+   https://stackoverflow.com/a/12646864
+
+() Fazer com que todos os cards exibam o título 
+   ou descrição com radio buttons
+
+() Sincronizar o estado de FlashCardsPage e FlashCard com useEffect
+
+() Comentar e mostrar uma outra alternativa mais elegante para
+   persistir o estado do app (lifting state up)
+
+() Limpar o app para disponibilização, 
+   removendo arquivos "desnecessários",
+   como por exemplo a pasta "node_modules". 
+   Use a biblioteca rimraf para isso.

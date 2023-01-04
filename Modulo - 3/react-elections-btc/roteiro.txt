@@ -1,0 +1,34 @@
+react-elections - roteiro
+=========================
+
+(x) Fazer cópia do projeto-base
+(x) Copiar pasta "img" para /public
+(x) Renomear pasta para react-elections
+(x) Instalar dependências
+(x) Inicializar backend
+(x) Inicializar frontend
+(x) Renomear projeto em App e index.html
+
+(x) Compreender o backend
+   (x) /cities
+   (x) /candidates
+   (x) /elections
+
+(x) Montar api para o backend
+   (x) Função para obter os municípios ordenados
+   (x) Função para obter os candidatos
+   (x) Função para obter as eleições (por município)
+      ordenados por voto e mesclados com city e
+      candidates
+
+() Criar componente pages/ElectionsPage
+   (x) useState - loadingPage, cities, candidates,
+      selectedCity, loadingElections, currentElections
+
+   () useEffect para carregar cities e candidates, com []
+   () useEffect para carregar elections, com [selectedCity]
+
+   () Loading para a página (carga de cities e candidates)
+   () Loading para a eleição atual
+   () Demais componentes visuais
+
